@@ -22,8 +22,31 @@
 //   .catch((error) => console.log("Error:", error));
 
 
-function a(){
-    console.log('Something is here');
+// Functions can be assigned to variables
+const sayHello = () => {
+    return "Hello";
+    
 }
 
-a()
+console.log(sayHello());
+
+// Functions can be passed as arguments to other functions
+
+const sayHelloToPerson = (greeter, person) => {
+    return greeter() + " " + person;
+}
+console.log(sayHelloToPerson(sayHello, "Jack"));
+
+
+// Functions can be returned from other functions
+
+const greetMaker = greeting => {
+    return person => {
+        return greeting + " " + person;
+    };
+};
+
+const sayHiToPerson = greetMaker("Hi");
+console.log(sayHiToPerson("Matthew"));
+const sayHaiToPerson = greetMaker("Hai");
+console.log(sayHaiToPerson("Peter"));
